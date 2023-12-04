@@ -41,7 +41,7 @@ char character(char start, int offset) {
 			throw invalidCharacterExcpeption();
 		}
 		else if (I < 65 || (I > 90 && I < 97) || I>122) {
-			throw invalidCharacterExcpeption();
+			throw invalidRangeException();
 		}
 		else if ((I >= 65 && I <= 90 && StartingValue >= 95 && StartingValue <= 122) || (I >= 95 && StartingValue <= 122 && StartingValue >= 65 && StartingValue <= 90)) {
 
@@ -54,7 +54,7 @@ char character(char start, int offset) {
 		return ' ';
 	}
 
-	catch (caseConversionException Exception2) {
+	catch (invalidRangeException Exception2) {
 		cout << "Invalid Range Exception" << endl;
 		return ' ';
 	}
@@ -66,4 +66,13 @@ char character(char start, int offset) {
 
 	return char(I);
 
+}
+
+int main() {
+
+	cout << character('c', 1) << endl;
+	cout << character('R', 55) << endl;
+	cout << character('v', 0) << endl;
+	cout << character('h', -5) << endl;
+	cout << character('A', 45) << endl;
 }
